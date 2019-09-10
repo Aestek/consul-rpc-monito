@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"log"
+	"os"
 
 	"github.com/hashicorp/go-bexpr"
 )
@@ -13,6 +14,8 @@ func main() {
 	debug := flag.Bool("debug", false, "Debug")
 	filter := flag.String("filter", "", "Filter using bexpr")
 	flag.Parse()
+
+	log.SetOutput(os.Stdout)
 
 	var filterFn *bexpr.Evaluator
 	if *filter != "" {
